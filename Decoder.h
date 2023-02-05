@@ -5,6 +5,8 @@
 #ifndef DECODER__DECODER_H_
 #define DECODER__DECODER_H_
 
+#include <string>
+
 class Decoder {
  public:
   auto static decryptCaesarShift(std::string text) -> std::string;
