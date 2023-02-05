@@ -26,18 +26,17 @@ class DecoderForm : public QWidget {
 
   std::string inputText;
 
-
   auto inputBoxLabel() -> QLabel *;
   auto inputBox() -> QLineEdit *;
   auto decryptButton() -> QPushButton *;
   auto outputBoxLabel() -> QLabel *;
   auto outputBox() -> QLabel *;
 
-  QLabel * inputBoxLabelPtr = inputBoxLabel();
-  QLineEdit * inputBoxPtr = inputBox();
-  QPushButton * decryptButtonPtr = decryptButton();
-  QLabel * outputBoxLabelPtr = outputBoxLabel();
-  QLabel * outputBoxPtr = outputBox();
+  QLabel *inputBoxLabelPtr = inputBoxLabel();
+  QLineEdit *inputBoxPtr = inputBox();
+  QPushButton *decryptButtonPtr = decryptButton();
+  QLabel *outputBoxLabelPtr = outputBoxLabel();
+  QLabel *outputBoxPtr = outputBox();
 
   static auto decryptCaesarShift(std::string) -> std::string;
 };
