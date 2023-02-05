@@ -7,6 +7,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DecoderForm; }
@@ -21,9 +22,12 @@ class DecoderForm : public QWidget {
 
  private:
   Ui::DecoderForm *ui;
-  auto inputBox() -> QLabel *;
 
-  static constexpr int margin = 10;
+  std::string inputText;
+
+  auto inputBoxLabel() -> QLabel *;
+  auto inputBox() -> QLineEdit *;
+
 };
 
 #endif //DECODER__DECODERFORM_H_

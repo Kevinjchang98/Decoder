@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
   // Initialize main decoder form
   decoderForm = new DecoderForm(this);
 
-  // Set as central widget
   setCentralWidget(decoderForm);
 
   statusBar()->showMessage("test");
@@ -25,3 +24,4 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow() {
   delete ui;
 }
+
