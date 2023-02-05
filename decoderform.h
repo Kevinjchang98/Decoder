@@ -8,6 +8,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DecoderForm; }
@@ -25,9 +26,18 @@ class DecoderForm : public QWidget {
 
   std::string inputText;
 
+
   auto inputBoxLabel() -> QLabel *;
   auto inputBox() -> QLineEdit *;
+  auto decryptButton() -> QPushButton *;
+  auto outputBox() -> QLabel *;
 
+  QLabel * inputBoxLabelPtr = inputBoxLabel();
+  QLineEdit * inputBoxPtr = inputBox();
+  QPushButton * decryptButtonPtr = decryptButton();
+  QLabel * outputBoxPtr = outputBox();
+
+  static auto decryptCaesarShift(std::string) -> std::string;
 };
 
 #endif //DECODER__DECODERFORM_H_

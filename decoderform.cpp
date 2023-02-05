@@ -2,13 +2,12 @@
 // Created by Kevin Chang on 2/5/2023.
 //
 
-// You may need to build the project (run Qt uic code generator) to get "ui_DecoderForm.h" resolved
-
 #include "decoderform.h"
 #include "ui_DecoderForm.h"
 #include <QLabel>
 #include <QGridLayout>
 #include <QLineEdit>
+#include <QPushButton>
 #include <iostream>
 
 DecoderForm::DecoderForm(QWidget *parent) :
@@ -17,8 +16,10 @@ DecoderForm::DecoderForm(QWidget *parent) :
 
   auto layout = new QGridLayout(this);
 
-  layout->addWidget(inputBoxLabel(), 0, 0);
-  layout->addWidget(inputBox(), 1, 0);
+  layout->addWidget(inputBoxLabelPtr, 0, 0);
+  layout->addWidget(inputBoxPtr, 1, 0);
+  layout->addWidget(decryptButtonPtr, 2, 0);
+  layout->addWidget(outputBoxPtr, 3, 0);
 }
 
 DecoderForm::~DecoderForm() {
@@ -41,4 +42,31 @@ auto DecoderForm::inputBox() -> QLineEdit * {
                    [this, inputBox]() { inputText = inputBox->text().toStdString(); });
 
   return inputBox;
+}
+
+auto DecoderForm::decryptButton() -> QPushButton * {
+  auto decryptButton = new QPushButton(this);
+  decryptButton->setText("Decrypt");
+
+  QObject::connect(decryptButton,
+                   &QPushButton::pressed,
+                   [this]() {
+                     auto decryptedText = decryptCaesarShift(this->inputText);
+                     outputBoxPtr->setText(
+                         decryptedText.length() == 0 ? "Empty input" : QString::fromStdString(decryptedText));
+                   });
+
+  return decryptButton;
+}
+
+auto DecoderForm::outputBox() -> QLabel * {
+  auto outputBox = new QLabel(this);
+  outputBox->setText("Enter some text in the input box and click decrypt");
+
+  return outputBox;
+}
+
+auto DecoderForm::decryptCaesarShift(std::string text) -> std::string {
+  // TODO: Finish
+  return text;
 }
