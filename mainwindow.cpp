@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   setCentralWidget(decoderForm);
 
-  statusBar()->showMessage("test");
+//  statusBar()->showMessage("test");
 }
 
 MainWindow::~MainWindow() {
