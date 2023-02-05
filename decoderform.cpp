@@ -4,6 +4,7 @@
 
 #include "decoderform.h"
 #include "ui_DecoderForm.h"
+#include "Decoder.h"
 #include <QLabel>
 #include <QGridLayout>
 #include <QLineEdit>
@@ -68,7 +69,7 @@ auto DecoderForm::decryptButton() -> QPushButton * {
   QObject::connect(decryptButton,
                    &QPushButton::pressed,
                    [this]() {
-                     auto decryptedText = decryptCaesarShift(this->inputText);
+                     auto decryptedText = Decoder::decryptCaesarShift(this->inputText);
                      outputBoxPtr->setText(
                          decryptedText.length() == 0 ? "Empty input" : QString::fromStdString(decryptedText));
                    });
@@ -90,7 +91,3 @@ auto DecoderForm::outputBox() -> QLabel * {
   return outputBox;
 }
 
-auto DecoderForm::decryptCaesarShift(std::string text) -> std::string {
-  // TODO: Finish
-  return text;
-}

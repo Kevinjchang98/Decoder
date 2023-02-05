@@ -37,8 +37,6 @@ class DecoderForm : public QWidget {
   QPushButton *decryptButtonPtr = decryptButton();
   QLabel *outputBoxLabelPtr = outputBoxLabel();
   QLabel *outputBoxPtr = outputBox();
-
-  static auto decryptCaesarShift(std::string) -> std::string;
 };
 
 #endif //DECODER__DECODERFORM_H_
