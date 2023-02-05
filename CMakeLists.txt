@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(Decoder main.cpp)
+add_executable(Decoder main.cpp mainwindow.cpp mainwindow.h mainwindow.ui)
 target_link_libraries(Decoder
         Qt::Core
         Qt::Gui
