@@ -16,10 +16,27 @@ DecoderForm::DecoderForm(QWidget *parent) :
 
   auto layout = new QGridLayout(this);
 
+  // Input box label
   layout->addWidget(inputBoxLabelPtr, 0, 0);
+  layout->setRowMinimumHeight(0, 30);
+
+  // Input textbox
   layout->addWidget(inputBoxPtr, 1, 0);
+  layout->setRowStretch(1, 1);
+
+  // Decrypt button
   layout->addWidget(decryptButtonPtr, 2, 0);
-  layout->addWidget(outputBoxPtr, 3, 0);
+
+  // Empty spacer
+  layout->setRowStretch(3, 1);
+
+  // Output box label
+  layout->addWidget(outputBoxLabelPtr, 4, 0);
+  layout->setRowMinimumHeight(4, 30);
+
+  // Output text display
+  layout->addWidget(outputBoxPtr, 5, 0);
+  layout->setRowStretch(5, 1);
 }
 
 DecoderForm::~DecoderForm() {
@@ -57,6 +74,13 @@ auto DecoderForm::decryptButton() -> QPushButton * {
                    });
 
   return decryptButton;
+}
+
+auto DecoderForm::outputBoxLabel() -> QLabel * {
+  auto outputBoxLabel = new QLabel(this);
+  outputBoxLabel->setText("Decrypted result");
+
+  return outputBoxLabel;
 }
 
 auto DecoderForm::outputBox() -> QLabel * {
