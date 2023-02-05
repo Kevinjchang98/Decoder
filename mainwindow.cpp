@@ -8,6 +8,18 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
+
+  // Set title
+  setWindowTitle(tr("Decoder"));
+  setUnifiedTitleAndToolBarOnMac(true);
+
+  // Initialize main decoder form
+  decoderForm = new DecoderForm(this);
+
+  // Set as central widget
+  setCentralWidget(decoderForm);
+
+  statusBar()->showMessage("test");
 }
 
 MainWindow::~MainWindow() {

@@ -6,6 +6,7 @@
 #define DECODER__MAINWINDOW_H_
 
 #include <QMainWindow>
+#include "decoderform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,6 +21,7 @@ class MainWindow : public QMainWindow {
 
  private:
   Ui::MainWindow *ui;
+  DecoderForm *decoderForm;
 };
 
 #endif //DECODER__MAINWINDOW_H_
