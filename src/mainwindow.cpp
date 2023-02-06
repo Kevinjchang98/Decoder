@@ -2,7 +2,7 @@
 // Created by Kevin Chang on 2/5/2023.
 //
 
-#include "mainwindow.h"
+#include "../include/mainwindow.h"
 #include "ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->setupUi(this);
 
   // Set title
-  setWindowTitle(tr("Decoder"));
+  setWindowTitle(tr("src"));
   setUnifiedTitleAndToolBarOnMac(true);
 
   // Initialize main decoder form

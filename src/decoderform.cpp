@@ -2,9 +2,9 @@
 // Created by Kevin Chang on 2/5/2023.
 //
 
-#include "decoderform.h"
+#include "../include/decoderform.h"
 #include "ui_DecoderForm.h"
-#include "Decoder.h"
+#include "../include/Decoder.h"
 #include <QLabel>
 #include <QGridLayout>
 #include <QLineEdit>
