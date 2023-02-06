@@ -9,7 +9,6 @@
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QPushButton>
-#include <iostream>
 
 DecoderForm::DecoderForm(QWidget *parent) :
     QWidget(parent), ui(new Ui::DecoderForm) {
