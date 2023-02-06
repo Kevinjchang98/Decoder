@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(src)
+project(Decoder)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
@@ -14,8 +14,8 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(src main.cpp src/mainwindow.cpp include/mainwindow.h src/mainwindow.ui src/decoderform.cpp include/decoderform.h src/decoderform.ui src/Decoder.cpp include/Decoder.h)
-target_link_libraries(src
+add_executable(Decoder main.cpp src/mainwindow.cpp include/mainwindow.h src/mainwindow.ui src/decoderform.cpp include/decoderform.h src/decoderform.ui src/Decoder.cpp include/Decoder.h)
+target_link_libraries(Decoder
         Qt::Core
         Qt::Gui
         Qt::Widgets
