@@ -59,6 +59,9 @@ auto DecoderForm::inputBox() -> QLineEdit * {
                    &QLineEdit::textChanged,
                    [this, inputBox]() { inputText = inputBox->text().toStdString(); });
 
+  // Pressing enter is the same as pressing the decrypt button
+  QObject::connect(inputBox, &QLineEdit::returnPressed, [=]() { decryptButtonPtr->click(); });
+
   return inputBox;
 }
 
