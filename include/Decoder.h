@@ -9,11 +9,8 @@
 
 class Decoder {
  public:
-  auto static decryptCaesarShift(const std::string& text) -> std::string;
-
-    static bool upperCase(const std::string& cipher_text);
-
-    bool is_all_upper(const std::string &cipher_text);
+  auto static decryptCaesarShift(const std::string &cipherText) -> std::string;
+  auto static upperCase(const std::string &cipherText) -> bool;
 };
 
 #endif //DECODER__DECODER_H_

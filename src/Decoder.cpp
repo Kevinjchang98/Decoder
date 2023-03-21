@@ -1,37 +1,35 @@
 #include <string>
 #include "../include/Decoder.h"
 
-bool Decoder::upperCase(const std::string& cipher_text) {
-    if (!cipher_text.empty()) {
-        for (char i : cipher_text) {
-            if (isupper(i))
-                return true;
-            else
-                return false;
-        }
+auto Decoder::upperCase(const std::string &cipherText) -> bool {
+  if (!cipherText.empty()) {
+    for (char i : cipherText) {
+      if (isupper(i))
+        return true;
+      else
+        return false;
     }
-    return true;
+  }
+
+  return true;
 }
 
-auto Decoder::decryptCaesarShift(const std::string& cipher_text) -> std::string {
-    std::string plain_text;
-    char ascii;
-    int key = 25;
+auto Decoder::decryptCaesarShift(const std::string &cipherText) -> std::string {
+  std::string plainText;
+  char ascii;
+  int key = 25;
 
-    if (upperCase(cipher_text))
-        ascii = 'A';
-    else
-        ascii = 'a';
+  if (upperCase(cipherText))
+    ascii = 'A';
+  else
+    ascii = 'a';
 
-    for (char c : cipher_text) {
-        if (isalpha(c)) {
-            c = (c - ascii + 26 - key) % 26 + ascii;
-        }
-        plain_text += c;
+  for (char c : cipherText) {
+    if (isalpha(c)) {
+      c = (c - ascii + 26 - key) % 26 + ascii;
     }
-    return plain_text;
+    plainText += c;
+  }
+
+  return plainText;
 }
-
-
-
-
