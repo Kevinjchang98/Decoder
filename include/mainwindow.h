@@ -6,6 +6,8 @@
 #define DECODER__MAINWINDOW_H_
 
 #include <QMainWindow>
+#include <QListWidget>
+#include <QDockWidget>
 #include "decoderform.h"
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +24,9 @@ class MainWindow : public QMainWindow {
  private:
   Ui::MainWindow *ui;
   DecoderForm *decoderForm;
+  QDockWidget *dock;
+  QListWidget *cipherList;
+  void createCipherList();
 };
 
 #endif //DECODER__MAINWINDOW_H_
