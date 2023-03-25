@@ -10,8 +10,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-DecoderForm::DecoderForm(QWidget *parent) :
-    QWidget(parent), ui(new Ui::DecoderForm) {
+DecoderForm::DecoderForm(QWidget *parent)
+    : QWidget(parent), ui(new Ui::DecoderForm) {
   ui->setupUi(this);
 
   auto layout = new QGridLayout(this);
@@ -56,11 +56,14 @@ auto DecoderForm::inputBox() -> QLineEdit * {
   // Update this->inputText whenever the text box's contents change
   QObject::connect(inputBox,
                    &QLineEdit::textChanged,
-                   [this, inputBox]() { inputText = inputBox->text().toStdString(); });
+                   [this, inputBox]() {
+                     inputText = inputBox->text().toStdString();
+                   });
 
   // Pressing enter is the same as pressing the decrypt button
   QObject::connect(inputBox, &QLineEdit::returnPressed, [this]() {
-    decryptButtonPtr->click(); });
+    decryptButtonPtr->click();
+  });
 
   return inputBox;
 }
@@ -69,13 +72,12 @@ auto DecoderForm::decryptButton() -> QPushButton * {
   auto decryptButton = new QPushButton(this);
   decryptButton->setText("Decrypt");
 
-  QObject::connect(decryptButton,
-                   &QPushButton::pressed,
-                   [this]() {
-                     auto decryptedText = Decoder::decryptCaesarShift(this->inputText);
-                     outputBoxPtr->setText(
-                         decryptedText.length() == 0 ? "Empty input" : QString::fromStdString(decryptedText));
-                   });
+  QObject::connect(decryptButton, &QPushButton::pressed, [this]() {
+    auto decryptedText = Decoder::decryptCaesarShift(this->inputText);
+    outputBoxPtr->setText(
+        decryptedText.length() == 0 ? "Empty input" : QString::fromStdString(
+            decryptedText));
+  });
 
   return decryptButton;
 }
