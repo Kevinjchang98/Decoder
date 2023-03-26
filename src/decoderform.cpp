@@ -76,7 +76,15 @@ auto DecoderForm::decryptButton() -> QPushButton * {
   decryptButton->setText("Decrypt");
 
   QObject::connect(decryptButton, &QPushButton::pressed, [this]() {
-    auto decryptedText = Decoder::decryptCaesarShift(this->inputText);
+    std::string decryptedText = "No decryption method selected";
+
+    // TODO: Find a better way to do this; enum probably?
+    if (currentCipher == "Caesar Shift") {
+      decryptedText = Decoder::decryptCaesarShift(this->inputText);
+    } else if (currentCipher == "Vigenere") {
+      decryptedText = "";
+    }
+
     outputBoxPtr->setText(
         decryptedText.length() == 0 ? "Empty input" : QString::fromStdString(
             decryptedText));
