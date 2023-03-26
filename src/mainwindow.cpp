@@ -6,7 +6,6 @@
 #include "ui_MainWindow.h"
 #include <QDockWidget>
 #include <QListWidget>
-#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {

@@ -10,7 +10,6 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <utility>
-#include <iostream>
 
 DecoderForm::DecoderForm(QWidget *parent)
     : QWidget(parent), ui(new Ui::DecoderForm) {
@@ -109,5 +108,4 @@ auto DecoderForm::outputBox() -> QLabel * {
 
 auto DecoderForm::setCurrentCipher(QString newCipher) -> void {
   currentCipher = std::move(newCipher);
-  std::cout << currentCipher.toStdString() << std::endl;
 }
