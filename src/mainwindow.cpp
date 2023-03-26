@@ -36,6 +36,7 @@ void MainWindow::createCipherList() {
 
   // Create cipherList
   cipherList = new QListWidget(dock);
+  cipherList->setFixedWidth(150);
   cipherList->addItems(QStringList() << "Caesar Shift" << "Vigenere");
 
   // Set main widget in dock to be cipherList
