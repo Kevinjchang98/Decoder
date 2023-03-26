@@ -21,10 +21,13 @@ class DecoderForm : public QWidget {
   explicit DecoderForm(QWidget *parent = nullptr);
   ~DecoderForm() override;
 
+  auto setCurrentCipher(QString) -> void;
+
  private:
   Ui::DecoderForm *ui;
 
   std::string inputText;
+  QString currentCipher;
 
   auto inputBoxLabel() -> QLabel *;
   auto inputBox() -> QLineEdit *;

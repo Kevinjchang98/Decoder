@@ -9,6 +9,8 @@
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QPushButton>
+#include <utility>
+#include <iostream>
 
 DecoderForm::DecoderForm(QWidget *parent)
     : QWidget(parent), ui(new Ui::DecoderForm) {
@@ -37,6 +39,9 @@ DecoderForm::DecoderForm(QWidget *parent)
   // Output text display
   layout->addWidget(outputBoxPtr, 5, 0);
   layout->setRowStretch(5, 1);
+
+  // Init currentCipher
+  currentCipher = "";
 }
 
 DecoderForm::~DecoderForm() {
@@ -54,11 +59,9 @@ auto DecoderForm::inputBox() -> QLineEdit * {
   auto inputBox = new QLineEdit(this);
 
   // Update this->inputText whenever the text box's contents change
-  QObject::connect(inputBox,
-                   &QLineEdit::textChanged,
-                   [this, inputBox]() {
-                     inputText = inputBox->text().toStdString();
-                   });
+  QObject::connect(inputBox, &QLineEdit::textChanged, [this, inputBox]() {
+    inputText = inputBox->text().toStdString();
+  });
 
   // Pressing enter is the same as pressing the decrypt button
   QObject::connect(inputBox, &QLineEdit::returnPressed, [this]() {
@@ -96,3 +99,7 @@ auto DecoderForm::outputBox() -> QLabel * {
   return outputBox;
 }
 
+auto DecoderForm::setCurrentCipher(QString newCipher) -> void {
+  currentCipher = std::move(newCipher);
+  std::cout << currentCipher.toStdString() << std::endl;
+}

@@ -6,11 +6,11 @@
 #include "ui_MainWindow.h"
 #include <QDockWidget>
 #include <QListWidget>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-
   // Set title
   setWindowTitle(tr("src"));
   setUnifiedTitleAndToolBarOnMac(true);
@@ -36,10 +36,15 @@ void MainWindow::createCipherList() {
 
   // Create cipherList
   cipherList = new QListWidget(dock);
-  cipherList->addItems(QStringList() << "Caesar Shift" << "Vigenère");
+  cipherList->addItems(QStringList() << "Caesar Shift" << "Vigenere");
 
   // Set main widget in dock to be cipherList
   dock->setWidget(cipherList);
+
+  // Logic for when selection changes
+  QObject::connect(cipherList, &QListWidget::itemSelectionChanged, [this]() {
+    decoderForm->setCurrentCipher(cipherList->currentItem()->text());
+  });
 
   // Add dock to MainWindow
   addDockWidget(Qt::LeftDockWidgetArea, dock);
