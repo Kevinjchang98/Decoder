@@ -40,7 +40,8 @@ void MainWindow::createCipherList() {
 
   // Set main widget in dock to be cipherList
   dock->setWidget(cipherList);
-  dock->setFeatures(QDockWidget::NoDockWidgetFeatures);
+  dock->setFeatures(
+      QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetMovable);
 
   // Logic for when selection changes
   QObject::connect(cipherList, &QListWidget::itemSelectionChanged, [this]() {
